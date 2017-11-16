@@ -67,7 +67,10 @@ var PaginationBoxView = function (_Component) {
 
       if (_this.state.selected === selected) return;
 
-      _this.setState({ selected: selected });
+      // Don't change selected page if it forced from props
+      if (!_this.props.forcePage) {
+        _this.setState({ selected: selected });
+      }
 
       // Call the callback with the new selected item:
       _this.callCallback(selected);
