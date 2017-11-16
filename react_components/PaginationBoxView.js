@@ -90,7 +90,10 @@ export default class PaginationBoxView extends Component {
 
     if (this.state.selected === selected) return;
 
-    this.setState({selected: selected});
+    // Don't change selected page if it forced from props
+    if (!this.props.forcePage) {
+      this.setState({selected: selected});
+    }
 
     // Call the callback with the new selected item:
     this.callCallback(selected);
